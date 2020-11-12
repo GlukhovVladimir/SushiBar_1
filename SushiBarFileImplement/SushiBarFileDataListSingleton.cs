@@ -168,7 +168,7 @@ namespace SushiBarFileImplement
                 var xElement = new XElement("Dishes");
                 foreach (var dish in Dishes)
                 {
-                    xElement.Add(new XElement("Ship",
+                    xElement.Add(new XElement("Dish",
                     new XAttribute("Id", dish.Id),
                     new XElement("DishName", dish.DishName),
                     new XElement("Price", dish.Price)));
