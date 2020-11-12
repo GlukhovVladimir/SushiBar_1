@@ -16,9 +16,9 @@ using SushiBarDatabaseImplement.Implements;
 
 namespace SushiBarRestApi
 {
-    public class Startup
+    public class StartUp
     {
-        public Startup(IConfiguration configuration)
+        public StartUp(IConfiguration configuration)
         {
             Configuration = configuration;
         }
@@ -31,6 +31,7 @@ namespace SushiBarRestApi
             services.AddTransient<IClientLogic, ClientLogic>();
             services.AddTransient<IOrderLogic, OrderLogic>();
             services.AddTransient<IDishLogic, DishLogic>();
+            services.AddTransient<IMessageInfoLogic, MessageInfoLogic>();
             services.AddTransient<MainLogic>();
             services.AddControllers();
         }

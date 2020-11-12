@@ -32,6 +32,7 @@
             this.CreateOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UpdateTheListOfOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ChangeDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MessagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewMain = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).BeginInit();
@@ -42,7 +43,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CreateOrderToolStripMenuItem,
             this.UpdateTheListOfOrdersToolStripMenuItem,
-            this.ChangeDataToolStripMenuItem});
+            this.ChangeDataToolStripMenuItem,
+            this.MessagesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
@@ -70,6 +72,13 @@
             this.ChangeDataToolStripMenuItem.Size = new System.Drawing.Size(117, 20);
             this.ChangeDataToolStripMenuItem.Text = "Изменить данные";
             this.ChangeDataToolStripMenuItem.Click += new System.EventHandler(this.ChangeDataToolStripMenuItem_Click);
+            // 
+            // MessagesToolStripMenuItem
+            // 
+            this.MessagesToolStripMenuItem.Name = "MessagesToolStripMenuItem";
+            this.MessagesToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
+            this.MessagesToolStripMenuItem.Text = "Сообщения";
+            this.MessagesToolStripMenuItem.Click += new System.EventHandler(this.MessagesToolStripMenuItem_Click);
             // 
             // dataGridViewMain
             // 
@@ -105,6 +114,7 @@
         private System.Windows.Forms.ToolStripMenuItem CreateOrderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem UpdateTheListOfOrdersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ChangeDataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MessagesToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridViewMain;
     }
 }
