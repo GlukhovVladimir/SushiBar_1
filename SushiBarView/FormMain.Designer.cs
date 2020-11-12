@@ -43,8 +43,12 @@
             this.DateOfExecution = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сушиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.деталиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.блюдаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отчётыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DetailShipsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -123,7 +127,7 @@
             // 
             // Ship
             // 
-            this.Dish.HeaderText = "Ингридиенты";
+            this.Dish.HeaderText = "Блюдов";
             this.Dish.Name = "Dish";
             this.Dish.Width = 90;
             // 
@@ -160,7 +164,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.справкаToolStripMenuItem});
+            this.справкаToolStripMenuItem,
+            this.отчётыToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(727, 24);
@@ -170,25 +175,56 @@
             // справкаToolStripMenuItem
             // 
             this.справкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.сушиToolStripMenuItem,
+            this.деталиToolStripMenuItem,
             this.блюдаToolStripMenuItem});
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
             this.справкаToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.справкаToolStripMenuItem.Text = "Справка";
             // 
-            // ингридиентыToolStripMenuItem
+            // деталиToolStripMenuItem
             // 
-            this.сушиToolStripMenuItem.Name = "сушиToolStripMenuItem";
-            this.сушиToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
-            this.сушиToolStripMenuItem.Text = "Ингридиенты";
-            this.сушиToolStripMenuItem.Click += new System.EventHandler(this.сушиToolStripMenuItem_Click);
+            this.деталиToolStripMenuItem.Name = "деталиToolStripMenuItem";
+            this.деталиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.деталиToolStripMenuItem.Text = "Ингридиенты";
+            this.деталиToolStripMenuItem.Click += new System.EventHandler(this.деталиToolStripMenuItem_Click_1);
             // 
-            // блюдаToolStripMenuItem
+            // суднаToolStripMenuItem
             // 
             this.блюдаToolStripMenuItem.Name = "блюдаToolStripMenuItem";
-            this.блюдаToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.блюдаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.блюдаToolStripMenuItem.Text = "Блюда";
-            this.блюдаToolStripMenuItem.Click += new System.EventHandler(this.блюдаToolStripMenuItem_Click);
+            this.блюдаToolStripMenuItem.Click += new System.EventHandler(this.блюдаToolStripMenuItem_Click_1);
+            // 
+            // отчётыToolStripMenuItem
+            // 
+            this.отчётыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DetailsToolStripMenuItem,
+            this.DetailShipsToolStripMenuItem,
+            this.OrdersToolStripMenuItem});
+            this.отчётыToolStripMenuItem.Name = "отчётыToolStripMenuItem";
+            this.отчётыToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.отчётыToolStripMenuItem.Text = "Отчёты";
+            // 
+            // DetailsToolStripMenuItem
+            // 
+            this.DetailsToolStripMenuItem.Name = "DetailsToolStripMenuItem";
+            this.DetailsToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.DetailsToolStripMenuItem.Text = "Список ингридиентов";
+            this.DetailsToolStripMenuItem.Click += new System.EventHandler(this.DetailsToolStripMenuItem_Click);
+            // 
+            // DetailShipsToolStripMenuItem
+            // 
+            this.DetailShipsToolStripMenuItem.Name = "DetailShipsToolStripMenuItem";
+            this.DetailShipsToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.DetailShipsToolStripMenuItem.Text = "ингридиенты по блюдам";
+            this.DetailShipsToolStripMenuItem.Click += new System.EventHandler(this.DetailShipsToolStripMenuItem_Click);
+            // 
+            // OrdersToolStripMenuItem
+            // 
+            this.OrdersToolStripMenuItem.Name = "OrdersToolStripMenuItem";
+            this.OrdersToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.OrdersToolStripMenuItem.Text = "Список заказов";
+            this.OrdersToolStripMenuItem.Click += new System.EventHandler(this.OrdersToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -231,7 +267,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DateOfExecution;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem сушиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem деталиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem блюдаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem отчётыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem DetailsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem DetailShipsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem OrdersToolStripMenuItem;
     }
 }

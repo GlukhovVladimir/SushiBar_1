@@ -21,12 +21,14 @@ namespace SushiBarView
         public new IUnityContainer Container { get; set; }
         private readonly MainLogic logic;
         private readonly IOrderLogic orderLogic;
+        private readonly ReportLogic report;
 
-        public FormMain(MainLogic logic, IOrderLogic orderLogic)
+        public FormMain(MainLogic logic, IOrderLogic orderLogic, ReportLogic report)
         {
             InitializeComponent();
             this.logic = logic;
             this.orderLogic = orderLogic;
+            this.report = report;
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -130,15 +132,43 @@ namespace SushiBarView
             LoadData();
         }
 
-        private void сушиToolStripMenuItem_Click(object sender, EventArgs e)
+        private void деталиToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormSushis>();
             form.ShowDialog();
         }
 
-        private void блюдаToolStripMenuItem_Click(object sender, EventArgs e)
+        private void блюдаToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormDishes>();
+            form.ShowDialog();
+        }
+
+        private void DetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new SaveFileDialog { Filter = "docx|*.docx" })
+            {
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    report.SaveDishesToWordFile(new ReportBindingModel
+                    {
+                        FileName = dialog.FileName
+                    });
+                    MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void DetailShipsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormReportDishSushis>();
+            form.ShowDialog();
+        }
+
+        private void OrdersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormReportOrders>();
             form.ShowDialog();
         }
     }
