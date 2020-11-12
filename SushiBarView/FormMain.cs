@@ -49,6 +49,7 @@ namespace SushiBarView
                         dataGridViewMain.Rows.Add(new object[]
                         {
                             order.Id,
+                            order.ClientLogin,
                             order.DishName,
                             order.Count,
                             order.Sum,
@@ -132,7 +133,7 @@ namespace SushiBarView
             LoadData();
         }
 
-        private void деталиToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void ингридиентыToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormSushis>();
             form.ShowDialog();
@@ -169,6 +170,12 @@ namespace SushiBarView
         private void OrdersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormReportOrders>();
+            form.ShowDialog();
+        }
+
+        private void ClientsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormClients>();
             form.ShowDialog();
         }
     }

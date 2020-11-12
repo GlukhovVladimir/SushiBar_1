@@ -9,6 +9,7 @@ namespace SushiBarDatabaseImplement.Models
     public class Order
     {
         public int Id { get; set; }
+        public int ClientId { get; set; }
         public int DishId { get; set; }
         [Required]
         public int Count { get; set; }
@@ -20,5 +21,6 @@ namespace SushiBarDatabaseImplement.Models
         public DateTime DateCreate { get; set; }
         public DateTime? DateImplement { get; set; }
         public virtual Dish Dish { get; set; }
+        public virtual Client Client { get; set; }
     }
 }

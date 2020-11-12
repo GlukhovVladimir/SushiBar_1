@@ -31,13 +31,15 @@ namespace SushiBarView
             var currentContainer = new UnityContainer();
             currentContainer.RegisterType<ISushiLogic, SushiLogic>(new
            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IClientLogic, ClientLogic>(new
+           HierarchicalLifetimeManager());
             currentContainer.RegisterType<IOrderLogic, OrderLogic>(new
            HierarchicalLifetimeManager());
             currentContainer.RegisterType<IDishLogic, DishLogic>(new
            HierarchicalLifetimeManager());
             currentContainer.RegisterType<MainLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<ReportLogic>(new
-          HierarchicalLifetimeManager());
+           HierarchicalLifetimeManager());
             return currentContainer;
         }
     }

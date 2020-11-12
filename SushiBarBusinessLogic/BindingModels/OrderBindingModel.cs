@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using SushiBarBusinessLogic.Enums;
+using System.Runtime.Serialization;
 
 namespace SushiBarBusinessLogic.BindingModels
 {
     public class OrderBindingModel
     {
         public int? Id { get; set; }
+        public int? ClientId { get; set; }
 
         public int DishId { get; set; }
 

@@ -28,22 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.dataGridViewReport = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonSaveToExcel = new System.Windows.Forms.Button();
             this.buttonMakeOrder = new System.Windows.Forms.Button();
             this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
-            this.reportOrdersViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.formReportDishSushisBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.formReportOrdersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReport)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reportOrdersViewModelBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.formReportDishSushisBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.formReportOrdersBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewReport
@@ -57,21 +50,6 @@
             this.dataGridViewReport.Name = "dataGridViewReport";
             this.dataGridViewReport.Size = new System.Drawing.Size(582, 384);
             this.dataGridViewReport.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Дата";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Суши";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Цена";
-            this.Column3.Name = "Column3";
             // 
             // buttonSaveToExcel
             // 
@@ -96,28 +74,31 @@
             // dateTimePickerFrom
             // 
             this.dateTimePickerFrom.Location = new System.Drawing.Point(13, 12);
-            this.dateTimePickerFrom.Name = "dateTimePickerFrom";
+            this.dateTimePickerFrom.Name = "dateTimePicker1";
             this.dateTimePickerFrom.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerFrom.TabIndex = 3;
             // 
             // dateTimePickerTo
             // 
             this.dateTimePickerTo.Location = new System.Drawing.Point(13, 39);
-            this.dateTimePickerTo.Name = "dateTimePickerTo";
+            this.dateTimePickerTo.Name = "dateTimePicker2";
             this.dateTimePickerTo.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerTo.TabIndex = 0;
             // 
-            // reportOrdersViewModelBindingSource
+            // Column1
             // 
-            this.reportOrdersViewModelBindingSource.DataSource = typeof(SushiBarBusinessLogic.ViewModels.ReportOrdersViewModel);
+            this.Column1.HeaderText = "Дата";
+            this.Column1.Name = "Column1";
             // 
-            // formReportDishSushisBindingSource
+            // Column2
             // 
-            this.formReportDishSushisBindingSource.DataSource = typeof(SushiBarView.FormReportDishSushis);
+            this.Column2.HeaderText = "Блюдо";
+            this.Column2.Name = "Column2";
             // 
-            // formReportOrdersBindingSource
+            // Column3
             // 
-            this.formReportOrdersBindingSource.DataSource = typeof(SushiBarView.FormReportOrders);
+            this.Column3.HeaderText = "Цена";
+            this.Column3.Name = "Column3";
             // 
             // FormReportOrders
             // 
@@ -132,11 +113,7 @@
             this.Name = "FormReportOrders";
             this.Text = "Отчёт по заказам";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReport)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reportOrdersViewModelBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.formReportDishSushisBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.formReportOrdersBindingSource)).EndInit();
             this.ResumeLayout(false);
-
         }
 
         #endregion
@@ -149,8 +126,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.BindingSource formReportOrdersBindingSource;
-        private System.Windows.Forms.BindingSource formReportDishSushisBindingSource;
-        private System.Windows.Forms.BindingSource reportOrdersViewModelBindingSource;
     }
 }

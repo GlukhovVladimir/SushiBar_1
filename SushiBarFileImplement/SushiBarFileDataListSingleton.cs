@@ -1,6 +1,6 @@
-﻿using System;
-using SushiBarBusinessLogic.Enums;
+﻿using SushiBarBusinessLogic.Enums;
 using SushiBarFileImplement.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,10 +16,12 @@ namespace SushiBarFileImplement
         private readonly string OrderFileName = "Order.xml";
         private readonly string DishFileName = "Dish.xml";
         private readonly string DishSushiFileName = "DishSushi.xml";
+        private readonly string ClientFileName = "Client.xml";
         public List<Sushi> Sushis { get; set; }
         public List<Order> Orders { get; set; }
         public List<Dish> Dishes { get; set; }
         public List<DishSushi> DishSushis { get; set; }
+        public List<Client> Clients { get; set; }
 
         private SushiBarFileDataListSingleton()
         {
@@ -27,6 +29,7 @@ namespace SushiBarFileImplement
             Orders = LoadOrders();
             Dishes = LoadDishes();
             DishSushis = LoadDishSushis();
+            Clients = LoadClients();
         }
         public static SushiBarFileDataListSingleton GetInstance()
         {
@@ -42,8 +45,28 @@ namespace SushiBarFileImplement
             SaveOrders();
             SaveDishes();
             SaveDishSushis();
+            SaveClients();
         }
-
+        private List<Client> LoadClients()
+        {
+            var list = new List<Client>();
+            if (File.Exists(ClientFileName))
+            {
+                XDocument xDocument = XDocument.Load(ClientFileName);
+                var xElements = xDocument.Root.Elements("Client").ToList();
+                foreach (var elem in xElements)
+                {
+                    list.Add(new Client
+                    {
+                        Id = Convert.ToInt32(elem.Attribute("Id").Value),
+                        FIO = elem.Element("FIO").Value,
+                        Login = elem.Element("Login").Value,
+                        Password = elem.Element("Password").Value
+                    });
+                }
+            }
+            return list;
+        }
         private List<Sushi> LoadSushis()
         {
             var list = new List<Sushi>();
@@ -75,6 +98,7 @@ namespace SushiBarFileImplement
                     {
                         Id = Convert.ToInt32(elem.Attribute("Id").Value),
                         DishId = Convert.ToInt32(elem.Element("DishId").Value),
+                        ClientId = Convert.ToInt32(elem.Element("ClientId").Value),
                         Count = Convert.ToInt32(elem.Element("Count").Value),
                         Sum = Convert.ToDecimal(elem.Element("Sum").Value),
                         Status = (OrderStatus)Enum.Parse(typeof(OrderStatus), elem.Element("Status").Value),
@@ -86,7 +110,6 @@ namespace SushiBarFileImplement
             }
             return list;
         }
-
         private List<Dish> LoadDishes()
         {
             var list = new List<Dish>();
@@ -126,16 +149,32 @@ namespace SushiBarFileImplement
             }
             return list;
         }
+
+        private void SaveClients()
+        {
+            if (Clients != null)
+            {
+                var xElement = new XElement("Clients");
+                foreach (var client in Clients)
+                {
+                    xElement.Add(new XElement("Client",
+                    new XAttribute("Id", client.Id),
+                    new XElement("FIO", client.FIO),
+                    new XElement("Login", client.Login),
+                    new XElement("Password", client.Password)));
+                }
+            }
+        }
         private void SaveSushis()
         {
             if (Sushis != null)
             {
                 var xElement = new XElement("Sushis");
-                foreach (var sushi in Sushis)
+                foreach (var detail in Sushis)
                 {
                     xElement.Add(new XElement("Sushi",
-                    new XAttribute("Id", sushi.Id),
-                    new XElement("SushiName", sushi.SushiName)));
+                    new XAttribute("Id", detail.Id),
+                    new XElement("SushiName", detail.SushiName)));
                 }
                 XDocument xDocument = new XDocument(xElement);
                 xDocument.Save(SushiFileName);
@@ -150,6 +189,7 @@ namespace SushiBarFileImplement
                 {
                     xElement.Add(new XElement("Order",
                     new XAttribute("Id", order.Id),
+                    new XElement("ClientId", order.ClientId),
                     new XElement("DishId", order.DishId),
                     new XElement("Count", order.Count),
                     new XElement("Sum", order.Sum),
