@@ -20,11 +20,13 @@ namespace SushiBarView
         [Dependency]
         public new IUnityContainer Container { get; set; }
         private readonly IDishLogic dishlogic;
+        private readonly IClientLogic clientLogic;
         private readonly MainLogic logicMain;
-        public FormCreateOrder(IDishLogic logicP, MainLogic logicM)
+        public FormCreateOrder(IDishLogic logicP, IClientLogic logicC, MainLogic logicM)
         {
             InitializeComponent();
             this.dishlogic = logicP;
+            this.clientLogic = logicC;
             this.logicMain = logicM;
         }
 
@@ -39,6 +41,14 @@ namespace SushiBarView
                     comboBoxDish.ValueMember = "Id";
                     comboBoxDish.DataSource = list;
                     comboBoxDish.SelectedItem = null;
+                }
+                List<ClientViewModel> clientList = clientLogic.Read(null);
+                if (clientList != null)
+                {
+                    comboBoxClient.DisplayMember = "Login";
+                    comboBoxClient.ValueMember = "Id";
+                    comboBoxClient.DataSource = clientList;
+                    comboBoxClient.SelectedItem = null;
                 }
             }
             catch (Exception ex)
@@ -91,7 +101,7 @@ namespace SushiBarView
             }
             if (comboBoxDish.SelectedValue == null)
             {
-                MessageBox.Show("Выберите ингридиент", "Ошибка", MessageBoxButtons.OK,
+                MessageBox.Show("Выберите блюдо", "Ошибка", MessageBoxButtons.OK,
                MessageBoxIcon.Error);
                 return;
             }

@@ -11,7 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SushiBarListImplement", "Su
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SushiBarFileImplement", "SushiBarFileImplement\SushiBarFileImplement.csproj", "{1C36D49F-02BF-4065-A0CA-E0ACAFB9535D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SushiBarDatabaseImplement", "SushiBarDatabaseImplement\SushiBarDatabaseImplement.csproj", "{7FF8CFAA-A6CE-4437-967A-258445245A0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SushiBarDatabaseImplement", "SushiBarDatabaseImplement\SushiBarDatabaseImplement.csproj", "{7FF8CFAA-A6CE-4437-967A-258445245A0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SushiBarRestApi", "SushiBarRestApi\SushiBarRestApi.csproj", "{9AD375C3-8A78-4513-972C-35DE605AF01B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SushiBarClientView", "SushiBarClientView\SushiBarClientView.csproj", "{AA494C1E-0FFE-4BBD-90A1-913C7118EA98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{7FF8CFAA-A6CE-4437-967A-258445245A0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FF8CFAA-A6CE-4437-967A-258445245A0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FF8CFAA-A6CE-4437-967A-258445245A0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AD375C3-8A78-4513-972C-35DE605AF01B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AD375C3-8A78-4513-972C-35DE605AF01B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AD375C3-8A78-4513-972C-35DE605AF01B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AD375C3-8A78-4513-972C-35DE605AF01B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA494C1E-0FFE-4BBD-90A1-913C7118EA98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA494C1E-0FFE-4BBD-90A1-913C7118EA98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA494C1E-0FFE-4BBD-90A1-913C7118EA98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA494C1E-0FFE-4BBD-90A1-913C7118EA98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

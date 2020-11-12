@@ -5,7 +5,6 @@ using SushiBarFileImplement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace SushiBarFileImplement.Implements
 {
@@ -36,6 +35,7 @@ namespace SushiBarFileImplement.Implements
                 source.Orders.Add(element);
             }
             element.DishId = model.DishId;
+            element.ClientId = model.ClientId.Value;
             element.Count = model.Count;
             element.Sum = model.Sum;
             element.Status = model.Status;
@@ -59,11 +59,17 @@ namespace SushiBarFileImplement.Implements
         public List<OrderViewModel> Read(OrderBindingModel model)
         {
             return source.Orders
-            .Where(rec => model == null || rec.Id == model.Id || (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo))
+            .Where(rec => model == null || rec.Id == model.Id
+           || rec.DateCreate >= model.DateFrom.Value
+           && rec.DateCreate <= model.DateTo.Value
+           || model.ClientId.HasValue && model.ClientId == rec.ClientId)
             .Select(rec => new OrderViewModel
             {
                 Id = rec.Id,
                 DishId = rec.DishId,
+                ClientId = rec.ClientId,
+                ClientLogin = source.Clients.FirstOrDefault(cl =>
+                cl.Id == rec.Id)?.Login,
                 DishName = source.Dishes.FirstOrDefault(mod =>
                 mod.Id == rec.DishId)?.DishName,
                 Count = rec.Count,

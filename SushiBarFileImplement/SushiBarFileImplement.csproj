@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SushiBarBusinessLogic\SushiBarBusinessLogic.csproj" />
+    <ProjectReference Include="..\SushiBarDatabaseImplement\SushiBarDatabaseImplement.csproj" />
   </ItemGroup>
 
 </Project>

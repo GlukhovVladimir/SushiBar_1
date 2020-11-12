@@ -3,10 +3,25 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SushiBarDatabaseImplement.Migrations
 {
-    public partial class initialCreate : Migration
+    public partial class lab5 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Clients",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FIO = table.Column<string>(nullable: false),
+                    Login = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Clients", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Dishes",
                 columns: table => new
@@ -40,6 +55,7 @@ namespace SushiBarDatabaseImplement.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    ClientId = table.Column<int>(nullable: false),
                     DishId = table.Column<int>(nullable: false),
                     Count = table.Column<int>(nullable: false),
                     Sum = table.Column<decimal>(nullable: false),
@@ -50,6 +66,12 @@ namespace SushiBarDatabaseImplement.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Orders", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Orders_Clients_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "Clients",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Orders_Dishes_DishId",
                         column: x => x.DishId,
@@ -96,6 +118,11 @@ namespace SushiBarDatabaseImplement.Migrations
                 column: "SushiId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Orders_ClientId",
+                table: "Orders",
+                column: "ClientId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Orders_DishId",
                 table: "Orders",
                 column: "DishId");
@@ -111,6 +138,9 @@ namespace SushiBarDatabaseImplement.Migrations
 
             migrationBuilder.DropTable(
                 name: "Sushis");
+
+            migrationBuilder.DropTable(
+                name: "Clients");
 
             migrationBuilder.DropTable(
                 name: "Dishes");

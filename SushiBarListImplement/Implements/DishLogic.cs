@@ -65,7 +65,7 @@ namespace SushiBarListImplement.Implements
                     return;
                 }
             }
-            throw new Exception("Судно не найдено");
+            throw new Exception("Блюдо не найдено");
         }
         private Dish CreateModel(DishBindingModel model, Dish dish)
         {
