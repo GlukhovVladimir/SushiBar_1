@@ -15,6 +15,7 @@ namespace SushiBarListImplement
         public List<Dish> Dishes { get; set; }
         public List<DishSushi> DishSushis { get; set; }
         public List<Client> Clients { get; set; }
+        public List<Implementer> Implementers { get; set; }
 
         private DataListSingleton()
         {
@@ -23,6 +24,7 @@ namespace SushiBarListImplement
             Dishes = new List<Dish>();
             DishSushis = new List<DishSushi>();
             Clients = new List<Client>();
+            Implementers = new List<Implementer>();
         }
         public static DataListSingleton GetInstance()
         {

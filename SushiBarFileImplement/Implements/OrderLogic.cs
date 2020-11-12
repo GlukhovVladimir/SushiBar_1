@@ -1,4 +1,5 @@
 ﻿using SushiBarBusinessLogic.BindingModels;
+using SushiBarBusinessLogic.Enums;
 using SushiBarBusinessLogic.Interfaces;
 using SushiBarBusinessLogic.ViewModels;
 using SushiBarFileImplement.Models;
@@ -36,6 +37,7 @@ namespace SushiBarFileImplement.Implements
             }
             element.DishId = model.DishId;
             element.ClientId = model.ClientId.Value;
+            element.ImplementerId = model.ImplementerId;
             element.Count = model.Count;
             element.Sum = model.Sum;
             element.Status = model.Status;
@@ -59,25 +61,33 @@ namespace SushiBarFileImplement.Implements
         public List<OrderViewModel> Read(OrderBindingModel model)
         {
             return source.Orders
-            .Where(rec => model == null || rec.Id == model.Id
+
+           .Where(rec => model == null || rec.Id == model.Id
            || rec.DateCreate >= model.DateFrom.Value
            && rec.DateCreate <= model.DateTo.Value
-           || model.ClientId.HasValue && model.ClientId == rec.ClientId)
-            .Select(rec => new OrderViewModel
-            {
-                Id = rec.Id,
-                DishId = rec.DishId,
-                ClientId = rec.ClientId,
-                ClientLogin = source.Clients.FirstOrDefault(cl =>
-                cl.Id == rec.Id)?.Login,
-                DishName = source.Dishes.FirstOrDefault(mod =>
-                mod.Id == rec.DishId)?.DishName,
-                Count = rec.Count,
-                Sum = rec.Sum,
-                Status = rec.Status,
-                DateCreate = rec.DateCreate,
-                DateImplement = rec.DateImplement
-            })
+           || model.ClientId.HasValue && model.ClientId == rec.ClientId
+           || model.FreeOrders.HasValue && model.FreeOrders.Value &&
+           !rec.ImplementerId.HasValue
+           || model.ImplementerId.HasValue && rec.ImplementerId ==
+            model.ImplementerId && rec.Status == OrderStatus.Выполняется)
+           .Select(rec => new OrderViewModel
+           {
+               Id = rec.Id,
+               DishId = rec.DishId,
+               ClientId = rec.ClientId,
+               ClientLogin = source.Clients.FirstOrDefault(cl =>
+               cl.Id == rec.Id)?.Login,
+               ImplementerId = rec.ImplementerId,
+               ImplementerFIO = source.Implementers.FirstOrDefault(recC =>
+               recC.Id == rec.ImplementerId)?.ImplementerFIO,
+               DishName = source.Dishes.FirstOrDefault(mod =>
+               mod.Id == rec.DishId)?.DishName,
+               Count = rec.Count,
+               Sum = rec.Sum,
+               Status = rec.Status,
+               DateCreate = rec.DateCreate,
+               DateImplement = rec.DateImplement
+           })
            .ToList();
         }
     }

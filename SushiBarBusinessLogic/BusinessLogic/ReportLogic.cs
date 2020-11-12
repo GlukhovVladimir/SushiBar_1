@@ -15,7 +15,7 @@ namespace SushiBarBusinessLogic.BusinessLogic
         private readonly IDishLogic dishLogic;
         private readonly IOrderLogic orderLogic;
 
-        public ReportLogic(IDishLogic dishLogic, ISushiLogic sushiLogic,
+        public ReportLogic(IDishLogic shipLogic, ISushiLogic detailLogic,
        IOrderLogic orderLLogic)
         {
             this.dishLogic = dishLogic;
@@ -41,7 +41,7 @@ namespace SushiBarBusinessLogic.BusinessLogic
                     {
                         DishName = " ",
                         SushiName = sh.Value.Item1,
-
+                        TotalCount = sh.Value.Item2
                     };
                     list.Add(record);
                 }
@@ -63,7 +63,7 @@ namespace SushiBarBusinessLogic.BusinessLogic
                 OrdersSum = g.Select(o =>
                 new Tuple<string, decimal>(o.DishName, o.Sum)).ToList(),
                 Sum = g.Sum(o => o.Sum)
-            }).ToList(); 
+            }).ToList();
         }
 
         public void SaveDishesToWordFile(ReportBindingModel model)

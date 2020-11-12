@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SushiBarBusinessLogic.BindingModels;
+using SushiBarBusinessLogic.Enums;
 using SushiBarBusinessLogic.Interfaces;
 using SushiBarBusinessLogic.ViewModels;
 using SushiBarDatabaseImplement.Models;
@@ -32,6 +33,7 @@ namespace SushiBarDatabaseImplement.Implements
                     context.Orders.Add(element);
                 }
                 element.DishId = model.DishId == 0 ? element.DishId : model.DishId;
+                element.ImplementerId = model.ImplementerId;
                 element.ClientId = model.ClientId.Value;
                 element.Count = model.Count;
                 element.Sum = model.Sum;
@@ -46,7 +48,7 @@ namespace SushiBarDatabaseImplement.Implements
             using (var context = new SushiBarDatabase())
             {
                 Order element = context.Orders.FirstOrDefault(rec => rec.Id ==
-model.Id);
+                model.Id);
                 if (element != null)
                 {
                     context.Orders.Remove(element);
@@ -68,11 +70,14 @@ model.Id);
                 || (model.DateFrom.HasValue && model.DateTo.HasValue
                 && rec.DateCreate >= model.DateFrom.Value
                 && rec.DateCreate <= model.DateTo.Value)
-                || model.ClientId.HasValue && model.ClientId == rec.ClientId)
+                || model.ClientId.HasValue && model.ClientId == rec.ClientId
+                || model.FreeOrders.HasValue && model.FreeOrders.Value && !rec.ImplementerId.HasValue
+                || model.ImplementerId.HasValue && rec.ImplementerId == model.ImplementerId && rec.Status == OrderStatus.Выполняется)
                 .Select(rec => new OrderViewModel
                 {
                     Id = rec.Id,
                     DishId = rec.DishId,
+                    ImplementerId = rec.ImplementerId,
                     DishName = rec.Dish.DishName,
                     ClientId = rec.ClientId,
                     ClientLogin = rec.Client.Login,
@@ -80,7 +85,9 @@ model.Id);
                     Sum = rec.Sum,
                     Status = rec.Status,
                     DateCreate = rec.DateCreate,
-                    DateImplement = rec.DateImplement
+                    DateImplement = rec.DateImplement,
+                    ImplementerFIO = rec.ImplementerId.HasValue ?
+                rec.Implementer.ImplementerFIO : string.Empty
                 })
             .ToList();
             }

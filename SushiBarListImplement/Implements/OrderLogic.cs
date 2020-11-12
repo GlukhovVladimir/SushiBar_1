@@ -1,4 +1,5 @@
 ﻿using SushiBarBusinessLogic.BindingModels;
+using SushiBarBusinessLogic.Enums;
 using SushiBarBusinessLogic.Interfaces;
 using SushiBarBusinessLogic.ViewModels;
 using SushiBarListImplement.Models;
@@ -70,7 +71,9 @@ namespace SushiBarListImplement.Implements
                     if (order.Id == model.Id.Value
                     || order.DateCreate >= model.DateFrom.Value
                     && order.DateCreate <= model.DateTo.Value
-                    || model.ClientId.HasValue && order.ClientId == model.ClientId)
+                    || model.ClientId.HasValue && order.ClientId == model.ClientId
+                    || model.FreeOrders.HasValue && model.FreeOrders.Value
+                    || model.ImplementerId.HasValue && order.ImplementerId == model.ImplementerId && order.Status == OrderStatus.Выполняется)
                     {
                         result.Add(CreateViewModel(order));
                         break;
@@ -86,6 +89,7 @@ namespace SushiBarListImplement.Implements
         {
             order.DishId = model.DishId;
             order.ClientId = model.ClientId.Value;
+            order.ImplementerId = model.ImplementerId;
             order.Count = model.Count;
             order.Sum = model.Sum;
             order.Status = model.Status;

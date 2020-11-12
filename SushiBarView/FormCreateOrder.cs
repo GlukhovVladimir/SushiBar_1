@@ -110,6 +110,7 @@ namespace SushiBarView
                 logicMain.CreateOrder(new CreateOrderBindingModel
                 {
                     DishId = Convert.ToInt32(comboBoxDish.SelectedValue),
+                    ClientId = Convert.ToInt32(comboBoxClient.SelectedValue),
                     Count = Convert.ToInt32(textBoxCount.Text),
                     Sum = Convert.ToDecimal(textBoxSum.Text)
                 });
