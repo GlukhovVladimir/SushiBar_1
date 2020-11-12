@@ -24,7 +24,7 @@ namespace SushiBarFileImplement.Implements
             == model.Login && rec.Id != model.Id);
             if (element != null)
             {
-                throw new Exception("Уже есть клиент с таким логином");
+                throw new Exception("Уже есть клинет с таким логином");
             }
             if (model.Id.HasValue)
             {

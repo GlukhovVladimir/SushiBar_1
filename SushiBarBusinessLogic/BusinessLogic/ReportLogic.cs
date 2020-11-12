@@ -15,11 +15,11 @@ namespace SushiBarBusinessLogic.BusinessLogic
         private readonly IDishLogic dishLogic;
         private readonly IOrderLogic orderLogic;
 
-        public ReportLogic(IDishLogic shipLogic, ISushiLogic detailLogic,
+        public ReportLogic(IDishLogic dishLogic, ISushiLogic sushiLogic,
        IOrderLogic orderLLogic)
         {
-            this.dishLogic = dishLogic;
-            this.sushiLogic = sushiLogic;
+            this.dishLogic = this.dishLogic;
+            this.sushiLogic = this.sushiLogic;
             this.orderLogic = orderLLogic;
         }
 
