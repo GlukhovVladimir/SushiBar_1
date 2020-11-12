@@ -1,4 +1,5 @@
-﻿using SushiBarBusinessLogic.Enums;
+﻿using SushiBarBusinessLogic.Attributes;
+using SushiBarBusinessLogic.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,40 +8,50 @@ using System.Text;
 
 namespace SushiBarBusinessLogic.ViewModels
 {
-    public class OrderViewModel
-    {
-        [DataMember]
-        public int Id { get; set; }
-        [DataMember]
-        public int ClientId { get; set; }
-        [DataMember]
-        public int? ImplementerId { get; set; }
-        [DataMember]
-        [DisplayName("Исполнитель")]
-        public string ImplementerFIO { get; set; }
-        [DataMember]
-        public int DishId { get; set; }
-        [DataMember]
-        [DisplayName("Клиент")]
-        public string ClientLogin { get; set; }
-        [DataMember]
-        [DisplayName("Блюдов")]
-        public string DishName { get; set; }
-        [DataMember]
-        [DisplayName("Количество")]
-        public int Count { get; set; }
-        [DataMember]
-        [DisplayName("Сумма")]
-        public decimal Sum { get; set; }
-        [DataMember]
-        [DisplayName("Статус")]
-        public OrderStatus Status { get; set; }
-        [DataMember]
-        [DisplayName("Дата создания")]
-        public DateTime DateCreate { get; set; }
-        [DataMember]
-        [DisplayName("Дата выполнения")]
-        public DateTime? DateImplement { get; set; }
-    }
+        public class OrderViewModel : BaseViewModel
+        {
+            [DataMember]
+            public int ClientId { get; set; }
+            [DataMember]
+            public int? ImplementerId { get; set; }
+            [DataMember]
+            [Column(title: "Исполнитель", width: 100)]
+            public string ImplementerFIO { get; set; }
+            [DataMember]
+            public int DishId { get; set; }
+            [DataMember]
+            [Column(title: "Клиент", width: 150)]
+            public string ClientLogin { get; set; }
+            [DataMember]
+            [Column(title: "Блюдо", width: 100)]
+            public string DishName { get; set; }
+            [DataMember]
+            [Column(title: "Количество", width: 100)]
+            public int Count { get; set; }
+            [DataMember]
+            [Column(title: "Сумма", width: 50)]
+            public decimal Sum { get; set; }
+            [DataMember]
+            [Column(title: "Статус", width: 100)]
+            public OrderStatus Status { get; set; }
+            [DataMember]
+            [Column(title: "Дата создания", width: 100)]
+            public DateTime DateCreate { get; set; }
+            [DataMember]
+            [Column(title: "Дата выполнения", width: 100)]
+            public DateTime? DateImplement { get; set; }
+            public override List<string> Properties() => new List<string>
+        {
+            "Id",
+            "ClientId",
+            "ImplementerFIO",
+            "DishName",
+            "Count",
+            "Sum",
+            "Status",
+            "DateCreate",
+            "DateImplement"
+        };
+        }
 
-}
+    }

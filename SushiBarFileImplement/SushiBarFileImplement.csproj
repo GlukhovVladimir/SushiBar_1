@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MailKit" Version="2.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SushiBarBusinessLogic\SushiBarBusinessLogic.csproj" />
     <ProjectReference Include="..\SushiBarDatabaseImplement\SushiBarDatabaseImplement.csproj" />
   </ItemGroup>

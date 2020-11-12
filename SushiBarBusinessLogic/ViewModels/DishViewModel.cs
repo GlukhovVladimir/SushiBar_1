@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SushiBarBusinessLogic.Attributes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.Serialization;
@@ -6,18 +7,22 @@ using System.Text;
 
 namespace SushiBarBusinessLogic.ViewModels
 {
-    public class DishViewModel
+    public class DishViewModel : BaseViewModel
     {
+        [Column(title: "Название блюда", gridViewAutoSize: GridViewAutoSize.Fill)]
         [DataMember]
-        public int Id { get; set; }
-        [DataMember]
-        [DisplayName("Название блюда")]
         public string DishName { get; set; }
+        [Column(title: "Цена", width: 50)]
         [DataMember]
-        [DisplayName("Цена")]
         public decimal Price { get; set; }
         [DataMember]
         public Dictionary<int, (string, int)> DishSushis { get; set; }
+        public override List<string> Properties() => new List<string>
+        {
+            "Id",
+            "DishName",
+            "Price"
+        };
     }
 
 }

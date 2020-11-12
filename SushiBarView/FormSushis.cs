@@ -15,8 +15,7 @@ namespace SushiBarView
 {
     public partial class FormSushis : Form
     {
-            [Dependency]
-            public new IUnityContainer Container { get; set; }
+        [Dependency] public new IUnityContainer Container { get; set; }
 
         private readonly ISushiLogic logic;
 
@@ -35,12 +34,7 @@ namespace SushiBarView
         {
             try
             {
-                var list = logic.Read(null); if (list != null)
-                {
-                    SushiGridView.DataSource = list; SushiGridView.Columns[0].Visible = false;
-
-                    SushiGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                }
+                Program.ConfigGrid(logic.Read(null), SushiGridView);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
@@ -53,7 +47,6 @@ namespace SushiBarView
                 LoadData();
             }
         }
-
 
         private void Change_button_Click(object sender, EventArgs e)
         {
