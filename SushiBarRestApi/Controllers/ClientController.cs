@@ -1,12 +1,12 @@
-﻿using SushiBarBusinessLogic.BindingModels;
-using SushiBarBusinessLogic.Interfaces;
-using SushiBarBusinessLogic.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SushiBarBusinessLogic.BindingModels;
+using SushiBarBusinessLogic.Interfaces;
+using SushiBarBusinessLogic.ViewModels;
 using System.Text.RegularExpressions;
 
 namespace SushiBarRestApi.Controllers

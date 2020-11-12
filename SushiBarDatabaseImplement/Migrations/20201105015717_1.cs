@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SushiBarDatabaseImplement.Migrations
 {
-    public partial class lab7 : Migration
+    public partial class _1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -69,11 +69,11 @@ namespace SushiBarDatabaseImplement.Migrations
                 columns: table => new
                 {
                     MessageId = table.Column<string>(nullable: false),
-                    ClientId = table.Column<int>(nullable: true),
-                    SenderName = table.Column<string>(nullable: true),
+                    ClientId = table.Column<int>(nullable: false),
+                    SenderName = table.Column<string>(nullable: false),
                     DateDelivery = table.Column<DateTime>(nullable: false),
-                    Subject = table.Column<string>(nullable: true),
-                    Body = table.Column<string>(nullable: true)
+                    Subject = table.Column<string>(nullable: false),
+                    Body = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {

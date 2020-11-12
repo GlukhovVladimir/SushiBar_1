@@ -33,15 +33,7 @@ namespace SushiBarView
         {
             try
             {
-                if (dishSushis != null)
-                {
-                    dataGridViewDish.Rows.Clear();
-                    foreach (var pc in dishSushis)
-                    {
-                        dataGridViewDish.Rows.Add(new object[] { pc.Key, pc.Value.Item1,
-                            pc.Value.Item2 });
-                    }
-                }
+                Program.ConfigGrid(logic.Read(null), dataGridViewDish);
             }
             catch (Exception ex)
             {
@@ -157,7 +149,7 @@ namespace SushiBarView
             }
             if (dishSushis == null || dishSushis.Count == 0)
             {
-                MessageBox.Show("Заполните ингридиенты", "Ошибка", MessageBoxButtons.OK,
+                MessageBox.Show("Заполните компоненты", "Ошибка", MessageBoxButtons.OK,
                MessageBoxIcon.Error);
                 return;
             }
