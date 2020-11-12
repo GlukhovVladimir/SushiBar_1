@@ -17,11 +17,13 @@ namespace SushiBarFileImplement
         private readonly string DishFileName = "Dish.xml";
         private readonly string DishSushiFileName = "DishSushi.xml";
         private readonly string ClientFileName = "Client.xml";
+        private readonly string ImplementerFileName = "Implementer.xml";
         public List<Sushi> Sushis { get; set; }
         public List<Order> Orders { get; set; }
         public List<Dish> Dishes { get; set; }
         public List<DishSushi> DishSushis { get; set; }
         public List<Client> Clients { get; set; }
+        public List<Implementer> Implementers { get; set; }
 
         private SushiBarFileDataListSingleton()
         {
@@ -30,6 +32,7 @@ namespace SushiBarFileImplement
             Dishes = LoadDishes();
             DishSushis = LoadDishSushis();
             Clients = LoadClients();
+            Implementers = LoadImplementers();
         }
         public static SushiBarFileDataListSingleton GetInstance()
         {
@@ -46,6 +49,28 @@ namespace SushiBarFileImplement
             SaveDishes();
             SaveDishSushis();
             SaveClients();
+            SaveImplementers();
+        }
+        private List<Implementer> LoadImplementers()
+        {
+            var list = new List<Implementer>();
+            if (File.Exists(ImplementerFileName))
+            {
+                XDocument xDocument = XDocument.Load(ImplementerFileName);
+                var xElements = xDocument.Root.Elements("Implementer").ToList();
+
+                foreach (var elem in xElements)
+                {
+                    list.Add(new Implementer
+                    {
+                        Id = Convert.ToInt32(elem.Attribute("Id").Value),
+                        ImplementerFIO = elem.Element("ImplementerFIO").Value,
+                        WorkingTime = Convert.ToInt32(elem.Element("WorkingTime").Value),
+                        PauseTime = Convert.ToInt32(elem.Element("PauseTime").Value)
+                    });
+                }
+            }
+            return list;
         }
         private List<Client> LoadClients()
         {
@@ -150,6 +175,23 @@ namespace SushiBarFileImplement
             return list;
         }
 
+        private void SaveImplementers()
+        {
+            if (Implementers != null)
+            {
+                var xElement = new XElement("Implementers");
+                foreach (var implementer in Implementers)
+                {
+                    xElement.Add(new XElement("Implementer",
+                    new XAttribute("Id", implementer.Id),
+                    new XElement("ImplementerFIO", implementer.ImplementerFIO),
+                    new XElement("WorkingTime", implementer.WorkingTime),
+                    new XElement("PauseTime", implementer.PauseTime)));
+                }
+                XDocument xDocument = new XDocument(xElement);
+                xDocument.Save(ImplementerFileName);
+            }
+        }
         private void SaveClients()
         {
             if (Clients != null)
@@ -170,11 +212,11 @@ namespace SushiBarFileImplement
             if (Sushis != null)
             {
                 var xElement = new XElement("Sushis");
-                foreach (var detail in Sushis)
+                foreach (var sushi in Sushis)
                 {
                     xElement.Add(new XElement("Sushi",
-                    new XAttribute("Id", detail.Id),
-                    new XElement("SushiName", detail.SushiName)));
+                    new XAttribute("Id", sushi.Id),
+                    new XElement("SushiName", sushi.SushiName)));
                 }
                 XDocument xDocument = new XDocument(xElement);
                 xDocument.Save(SushiFileName);

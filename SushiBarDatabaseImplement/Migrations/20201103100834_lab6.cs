@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SushiBarDatabaseImplement.Migrations
 {
-    public partial class lab5 : Migration
+    public partial class lab6 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -37,6 +37,21 @@ namespace SushiBarDatabaseImplement.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Implementers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ImplementerFIO = table.Column<string>(nullable: true),
+                    WorkingTime = table.Column<int>(nullable: false),
+                    PauseTime = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Implementers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Sushis",
                 columns: table => new
                 {
@@ -56,6 +71,7 @@ namespace SushiBarDatabaseImplement.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ClientId = table.Column<int>(nullable: false),
+                    ImplementerId = table.Column<int>(nullable: true),
                     DishId = table.Column<int>(nullable: false),
                     Count = table.Column<int>(nullable: false),
                     Sum = table.Column<decimal>(nullable: false),
@@ -78,6 +94,12 @@ namespace SushiBarDatabaseImplement.Migrations
                         principalTable: "Dishes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Orders_Implementers_ImplementerId",
+                        column: x => x.ImplementerId,
+                        principalTable: "Implementers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -126,6 +148,11 @@ namespace SushiBarDatabaseImplement.Migrations
                 name: "IX_Orders_DishId",
                 table: "Orders",
                 column: "DishId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_ImplementerId",
+                table: "Orders",
+                column: "ImplementerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -144,6 +171,9 @@ namespace SushiBarDatabaseImplement.Migrations
 
             migrationBuilder.DropTable(
                 name: "Dishes");
+
+            migrationBuilder.DropTable(
+                name: "Implementers");
         }
     }
 }

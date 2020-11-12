@@ -10,6 +10,7 @@ namespace SushiBarBusinessLogic.BindingModels
     {
         public int? Id { get; set; }
         public int? ClientId { get; set; }
+        public int? ImplementerId { get; set; }
 
         public int DishId { get; set; }
 
@@ -26,5 +27,6 @@ namespace SushiBarBusinessLogic.BindingModels
         public DateTime? DateFrom { get; set; }
 
         public DateTime? DateTo { get; set; }
+        public bool? FreeOrders { get; set; }
     }
 }

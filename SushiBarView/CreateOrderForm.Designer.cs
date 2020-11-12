@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelDish = new System.Windows.Forms.Label();
+            this.labelShip = new System.Windows.Forms.Label();
             this.labelCount = new System.Windows.Forms.Label();
             this.textBoxCount = new System.Windows.Forms.TextBox();
             this.labelSum = new System.Windows.Forms.Label();
             this.textBoxSum = new System.Windows.Forms.TextBox();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.comboBoxDish = new System.Windows.Forms.ComboBox();
+            this.comboBoxShip = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // labelShip
             // 
-            this.labelDish.AutoSize = true;
-            this.labelDish.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelDish.Location = new System.Drawing.Point(80, 30);
-            this.labelDish.Name = "labelDish";
-            this.labelDish.Size = new System.Drawing.Size(70, 23);
-            this.labelDish.TabIndex = 0;
-            this.labelDish.Text = "Блюдо:";
+            this.labelShip.AutoSize = true;
+            this.labelShip.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelShip.Location = new System.Drawing.Point(80, 30);
+            this.labelShip.Name = "labelDish";
+            this.labelShip.Size = new System.Drawing.Size(70, 23);
+            this.labelShip.TabIndex = 0;
+            this.labelShip.Text = "Блюдо:";
             // 
             // labelCount
             // 
@@ -104,25 +104,25 @@
             // 
             // comboBoxShip
             // 
-            this.comboBoxDish.FormattingEnabled = true;
-            this.comboBoxDish.Location = new System.Drawing.Point(158, 32);
-            this.comboBoxDish.Name = "comboBoxDish";
-            this.comboBoxDish.Size = new System.Drawing.Size(196, 21);
-            this.comboBoxDish.TabIndex = 8;
+            this.comboBoxShip.FormattingEnabled = true;
+            this.comboBoxShip.Location = new System.Drawing.Point(158, 32);
+            this.comboBoxShip.Name = "comboBoxDish";
+            this.comboBoxShip.Size = new System.Drawing.Size(196, 21);
+            this.comboBoxShip.TabIndex = 8;
             // 
             // CreateOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(366, 205);
-            this.Controls.Add(this.comboBoxDish);
+            this.Controls.Add(this.comboBoxShip);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.textBoxSum);
             this.Controls.Add(this.labelSum);
             this.Controls.Add(this.textBoxCount);
             this.Controls.Add(this.labelCount);
-            this.Controls.Add(this.labelDish);
+            this.Controls.Add(this.labelShip);
             this.Name = "CreateOrderForm";
             this.Text = "Создание заказа";
             this.ResumeLayout(false);
@@ -132,13 +132,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Label labelDish;
+        private System.Windows.Forms.Label labelShip;
         private System.Windows.Forms.Label labelCount;
         private System.Windows.Forms.TextBox textBoxCount;
         private System.Windows.Forms.Label labelSum;
         private System.Windows.Forms.TextBox textBoxSum;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonCancel;
-        private System.Windows.Forms.ComboBox comboBoxDish;
+        private System.Windows.Forms.ComboBox comboBoxShip;
     }
 }

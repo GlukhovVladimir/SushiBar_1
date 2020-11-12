@@ -92,7 +92,7 @@
             // 
             // Column2
             // 
-            this.Column2.HeaderText = "Блюдо";
+            this.Column2.HeaderText = "Ингридиент";
             this.Column2.Name = "Column2";
             // 
             // Column3
